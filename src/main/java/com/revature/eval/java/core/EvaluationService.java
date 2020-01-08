@@ -174,8 +174,9 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+        string = string.replaceAll("[^0-9]", "");
+        //System.out.println(string);
+        return string;
 	}
 
 	/**
