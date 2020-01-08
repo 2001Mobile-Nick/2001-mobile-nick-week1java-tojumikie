@@ -3,6 +3,8 @@ package com.revature.eval.java.core;
 import java.time.temporal.Temporal;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EvaluationService {
 
@@ -30,9 +32,15 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
+        String[] splitPhrase = phrase.split(" ");
+        for (int i = 0; i < splitPhrase.length; i++)
+        {
+            String str = splitPhrase[i];
+            //System.out.print(str.charAt(0)); 
+        }
+        //System.out.println();
+        return phrase;
+    }
 
 	/**
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
@@ -353,8 +361,24 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+        int number = 1; int count = 0; int x;
+        while(count < i)
+        {
+            number++;
+            for(x = 2; x <= number; x++)
+            {
+                if (number % x == 0)
+                {
+                    break;
+                }
+            }
+            if(x == number)
+            {
+                count++;
+            }
+        }
+        //System.out.println(number);
+		return number;
 	}
 
 	/**
@@ -551,8 +575,44 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int solveWordProblem(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
-	}
-
+        int[] nums = new int[2];
+        int n = 0;
+        //String str = "What is -1 plus -10?";
+        int answer = 0;
+        
+        //Scanner kb = new Scanner(System.in);
+        String str = string;
+        
+        Pattern p = Pattern.compile("-?[0-9]+");
+        Matcher match = p.matcher(str);
+        while(match.find()) {
+            int value = Integer.parseInt(match.group());
+            //System.out.println(value);
+            nums[n] = value;
+            n++;
+        }
+        //System.out.println(Arrays.toString(nums));
+        if(str.contains("plus") == true)
+        {
+            answer = nums[0] + nums[1];
+            //System.out.println(answer);
+        }
+        else if(str.contains("minus") == true)
+        {
+            answer = nums[0] - nums[1];
+            //System.out.println(answer);
+        }
+        else if(str.contains("multiplied") == true)
+        {
+            answer = nums[0] * nums[1];
+            //System.out.println(answer);
+        }
+        else if(str.contains("divided by") == true)
+        {
+            answer = nums[0] / nums[1];
+            //System.out.println(answer);
+        }
+        //System.out.println(answer);
+        return answer;
+    }
 }
