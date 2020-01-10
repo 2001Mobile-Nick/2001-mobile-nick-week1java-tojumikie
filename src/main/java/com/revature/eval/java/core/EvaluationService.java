@@ -55,7 +55,7 @@ public class EvaluationService {
 	 * as having exactly two sides the same length, but for the purposes of this
 	 * exercise we'll say at least two.) A scalene triangle has all sides of
 	 * different lengths.
-	 *
+	 * 
 	 */
 	static class Triangle {
 		private double sideOne;
