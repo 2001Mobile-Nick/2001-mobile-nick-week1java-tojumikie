@@ -112,13 +112,25 @@ public class EvaluationService {
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
-			return false;
-		}
+            if((sideOne == sideTwo) || (sideOne == sideThree) || (sideTwo == sideThree))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
-			return false;
+            if((sideOne != sideTwo) && (sideTwo != sideThree) && (sideThree != sideOne))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 		}
 	}
 
