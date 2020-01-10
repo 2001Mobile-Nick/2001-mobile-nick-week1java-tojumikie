@@ -258,8 +258,17 @@ public class EvaluationService {
 		private List<T> sortedList;
 
 		public int indexOf(T t) {
-			// TODO Write an implementation for this method declaration
-			return 0;
+            int result = 0;
+            String testString = (String) t;
+            for (int i = 0; i < sortedList.size(); i++)
+            {
+                String test = (String) sortedList.get(i);
+                if (testString.equals(test)) {
+                    //System.out.println(i);
+                    result = i;
+                }
+            }
+            return result;
 		}
 
 		public BinarySearch(List<T> sortedList) {
@@ -315,8 +324,45 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
-		return false;
+	    {
+	        boolean isSingleDigitNumber;
+	        boolean isDoubleDigitNumber;
+	        boolean isTripleDigitNumber;
+	        boolean isQuadrupleDigitNumber;
+	        if(input >= 0 && input < 10)
+	        {
+	            isSingleDigitNumber = true;
+	            return true;
+	        }
+	        if(input >= 10 && input < 99)
+	        {
+	            isDoubleDigitNumber = true;
+	            return false;
+	        }
+	        if(input >= 100 && input < 999)
+	        {
+	            isTripleDigitNumber = true;
+	            int mod;
+	            int number1 = input;
+	            int number2 = number1;
+	            int answer = 0;
+
+	            while (number1 != 0) {
+	                mod = number1 % 10;
+	                answer += Math.pow(mod, 3);
+	                number1 /= 10;
+	            }
+	            
+	            if (answer == number2) {
+	                //System.out.println("armstrong");
+	                return true;
+	            } else {
+	                //System.out.println("not armstrong");
+	                return false;
+	            }
+	        }
+	        return false;
+	    }
 	}
 
 	/**
