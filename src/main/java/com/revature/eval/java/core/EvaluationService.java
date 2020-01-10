@@ -1,6 +1,12 @@
 package com.revature.eval.java.core;
 
+import java.time.Instant;
 import java.time.temporal.Temporal;
+import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
+import static java.time.temporal.ChronoUnit.SECONDS;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -92,8 +98,17 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
-			return false;
+            if(sideOne == sideTwo && sideTwo == sideThree)
+            {
+                //System.out.println("true");
+                return true;
+
+            }
+            else
+            {
+                //System.out.println("false");
+                return false;
+            }
 		}
 
 		public boolean isIsosceles() {
@@ -105,7 +120,6 @@ public class EvaluationService {
 			// TODO Write an implementation for this method declaration
 			return false;
 		}
-
 	}
 
 	/**
@@ -415,8 +429,35 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String encode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+	        //String test = "yes"; //string to test the following code
+	        string = string.toLowerCase();
+	        //char[] test2=;
+	        String originalString = "abcdefghijklmnopqrstuvwxyz"; 
+	        String reversed = new StringBuilder(originalString).reverse().toString(); //string from z to a
+	        //System.out.println(reversed);
+	        //int strlen = test.length();
+	        //int originalStringlen = originalString.length();
+	        String encoded = "";
+	        int tester = 0;
+	        int proceed = 0;
+	        int place = 0;
+	        for(int i = 0; i < string.length(); i++)
+	        {
+	            char c = string.charAt(i);
+	            for(int j = 0; j < originalString.length(); j++)
+	            {
+	                char o = originalString.charAt(j);
+	                if(o == c)
+	                {
+	                    proceed = originalString.indexOf(o);
+	                    place = (originalString.length() - 1) - proceed;
+	                    encoded += originalString.charAt(place);
+	                    break;
+	                }
+	            }
+	        }
+	        System.out.println(encoded);
+	        return encoded;
 		}
 
 		/**
@@ -516,8 +557,9 @@ public class EvaluationService {
 	 * @return
 	 */
 	public Temporal getGigasecondDate(Temporal given) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		given = given.plus(1000000000, SECONDS);
+        //System.out.println(given);
+        return given;
 	}
 
 	/**
